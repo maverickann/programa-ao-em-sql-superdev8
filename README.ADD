@@ -1,0 +1,6 @@
+CREATE DATABASE  helpdesk;
+proheto para fzer o gerencimento de tickets suporte
+
+crie o bd postgresql
+create database helpdesk
+]
