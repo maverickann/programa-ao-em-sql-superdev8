@@ -1,9 +1,6 @@
 package com.superdev.helpdesk.controllers;
 
-import com.superdev.helpdesk.dtos.ticket.TicketAssociarDto;
-import com.superdev.helpdesk.dtos.ticket.TicketCancelarDto;
-import com.superdev.helpdesk.dtos.ticket.TicketCriarDto;
-import com.superdev.helpdesk.dtos.ticket.TicketResolverDto;
+import com.superdev.helpdesk.dtos.ticket.*;
 import com.superdev.helpdesk.models.Ticket;
 import com.superdev.helpdesk.services.TicketService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,5 +52,10 @@ public class TicketController
         return service.resolver(id,dado)     ;}
 
 
+        @PostMapping("/{id}/definir-prioridade")
+    @Operation(summary = "definir prioridade")
+    public  Ticket definirPrioridade(@PathVariable int id, @RequestBody @Valid TicketDefinirPrioridadeDto dado){
+        return service.definirPrioridade(id,dado);
+        }
 
 }

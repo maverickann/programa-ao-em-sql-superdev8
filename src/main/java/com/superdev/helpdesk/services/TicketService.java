@@ -1,8 +1,6 @@
 package com.superdev.helpdesk.services;
 
-import com.superdev.helpdesk.dtos.ticket.TicketAssociarDto;
-import com.superdev.helpdesk.dtos.ticket.TicketCancelarDto;
-import com.superdev.helpdesk.dtos.ticket.TicketCriarDto;
+import com.superdev.helpdesk.dtos.ticket.*;
 import com.superdev.helpdesk.enums.Papel;
 import com.superdev.helpdesk.enums.Statusticket;
 import com.superdev.helpdesk.exceptions.RegraNegocio;
@@ -20,6 +18,8 @@ import java.util.UUID;
 public class TicketService {
     private final TicketRepository repository;
     private final UsuarioService usuarioService;
+    private int id;
+    private TicketDefinirPrioridadeDto dado;
 
     private TicketService(TicketRepository repository, UsuarioService usuarioService) {
         this.repository = repository;
@@ -96,6 +96,34 @@ public Ticket cancelar(int id, TicketCancelarDto dado) {
         return repository.save(ticket);
 
     }
+    public Ticket resolver(int id, TicketResolverDto dado){
+        Ticket ticket= repository.findById(id).orElseThrow();
+        if (ticket.getStatus()!=Statusticket.EM_ANALISE){
+            throw new RegraNegocio("Ticket não podem ser resolvido quando nao estiver em analise");
+
+        } ticket.setStatus(Statusticket.RESOLVIDO);
+        ticket.setDescricaoSolucao(dado.descricaoSolucao());
+        return repository.save(ticket);
+
+    } public Ticket definirPrioridade(int id, TicketDefinirPrioridadeDto dado){
+
+        Ticket ticket= repository.findById(id).orElseThrow();
+        if(ticket.getStatus()!=Statusticket.EM_ANALISE){
+            throw new RegraNegocio("Ticket podem ser colocados em prioridade");
+
+        }ticket.setPrioridade(dado.prioridade);
+
+        return repository.save(ticket);
+
+    }
+
+
+
+
+
+
+
+
                 }
 
 

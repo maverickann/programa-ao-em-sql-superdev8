@@ -65,5 +65,7 @@ public class Ticket {
         if(dataCriacao==null)
             dataCriacao=agora;
     }
+    @PreUpdate
+    void
 
 }
