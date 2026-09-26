@@ -1,5 +1,6 @@
 package com.superdev.helpdesk.models;
 
+import com.superdev.helpdesk.enums.Papel;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 
-public class Usuarios {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,6 +23,9 @@ public class Usuarios {
     private String nome;
     @Column (length = 200,nullable = false,unique = true)
     private String email;
+    @Enumerated(EnumType.STRING)
+    @Column (length = 20,nullable = false)
+    private Papel papel;
     @Column (nullable = false)
     private Boolean ativo;
     @Column(name = "criado em",nullable = false,updatable = false)

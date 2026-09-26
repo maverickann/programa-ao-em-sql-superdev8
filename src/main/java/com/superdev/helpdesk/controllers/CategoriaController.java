@@ -1,10 +1,9 @@
-package com.superdev.helpdesk.controller;
+package com.superdev.helpdesk.controllers;
 
 import com.superdev.helpdesk.dtos.categoria.CategoriaCriarDto;
 import com.superdev.helpdesk.models.Categoria;
 import com.superdev.helpdesk.services.CategoriasService;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

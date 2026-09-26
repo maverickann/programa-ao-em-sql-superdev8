@@ -1,0 +1,19 @@
+package com.superdev.helpdesk.exceptions;
+
+
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
+
+@Getter
+public class erroAplicacao extends RuntimeException  {
+    private final HttpStatus status;
+    private final String codigo;
+    protected ErroAplicacao(HttpStatus status,String codigo,String mensagem){
+        super(mensagem);
+        this.codigo=codigo;
+        this.status=status;
+
+    }
+
+
+}
