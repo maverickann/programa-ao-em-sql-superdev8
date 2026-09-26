@@ -1,5 +1,5 @@
 package com.superdev.helpdesk.exceptions;
 
-public class conflitoException {
-    public conflitoException (String menasagem);
+public class ConflitoException {
+    public ConflitoException(String menasagem);
 }

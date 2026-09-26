@@ -1,4 +1,5 @@
 package com.superdev.helpdesk.dtos.ticket;
 
-public class TicketAssociarDto {
+public record TicketAssociarDto (Integer usuarioId)
+{
 }

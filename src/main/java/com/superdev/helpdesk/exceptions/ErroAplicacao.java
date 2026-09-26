@@ -5,10 +5,10 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public class erroAplicacao extends RuntimeException  {
+public class ErroAplicacao extends RuntimeException  {
     private final HttpStatus status;
     private final String codigo;
-    protected ErroAplicacao(HttpStatus status,String codigo,String mensagem){
+    protected ErroAplicacao(HttpStatus status, String codigo, String mensagem){
         super(mensagem);
         this.codigo=codigo;
         this.status=status;

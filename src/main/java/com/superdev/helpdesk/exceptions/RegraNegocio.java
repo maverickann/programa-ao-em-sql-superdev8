@@ -1,7 +1,9 @@
 package com.superdev.helpdesk.exceptions;
 
-public class RegraNegocio extends RuntimeException {
-  public RegraNegocio(String message) {
-    super(message);
-  }
+import org.springframework.http.HttpStatus;
+
+public class RegraNegocio extends ErroAplicacao {
+    public RegraNegocio(String mensagem) {
+        super(HttpStatus.UNPROCESSABLE_CONTENT,"regra-negocio",mensagem);
+    }
 }

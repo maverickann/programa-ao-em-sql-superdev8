@@ -2,6 +2,7 @@ package com.superdev.helpdesk.services;
 
 import com.superdev.helpdesk.dtos.usuario.UsuarioAtualizarDto;
 import com.superdev.helpdesk.dtos.usuario.UsuarioCriarDto;
+import com.superdev.helpdesk.exceptions.ConflitoException;
 import com.superdev.helpdesk.models.Usuario;
 import com.superdev.helpdesk.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,10 @@ public class UsuarioService {
 
     public Usuario criar(UsuarioCriarDto dado){
         String email=dado.email().trim().toLowerCase();
-        repository.findByEmail(email).ifPresente(Usuario)
+        repository.findByEmail(email).ifPresent(
+                Usuario -> {
+                    throw new ConflitoException("ja tem um email existente");
+                });
 
 
         var usuario = Usuario.builder()
@@ -56,5 +60,9 @@ public class UsuarioService {
     public Usuario obterPorId(int id){
         var usuario = repository.findById(id).orElseThrow();
         return usuario;
+    }
+
+    public Usuario ob() {
+        return null;
     }
 }
